@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Magic Button</title>
+        <link rel="stylesheet" href="ButtonStyle.css">
+        <script src="Movement.js"></script>
+    </head>
+    <body onload="setTimeout(disappear,3000) ">
+        <p id="Teext">Use the arrow buttons to move box-kun and use the speed box to change his speed!!</p>
+        <div id="boxKun"></div>
+        <div id="buttonContainer" >
+            <button id="rightMove" onmousedown= "BtnContext(this.id)"></button>
+            <button id="leftMove" onclick="BtnContext(this.id)" ></button>
+            <button id="upMove" onclick="BtnContext(this.id)" ></button>
+            <button id="downMove" onclick="BtnContext(this.id)" ></button>
+            <button id="uprightMove" onclick="BtnContext(this.id)" ></button>
+            <button id="downrightMove" onclick="BtnContext(this.id)" ></button>
+            <button id="upleftMove" onclick="BtnContext(this.id)" ></button>
+            <button id="downleftMove" onclick="BtnContext(this.id)" ></button>
+            <input type="text" id="number" oninput="realSpeed(this.value)" > <span>speed:</span> 
+            <button id="Reset" onclick="Reset()"> Reset </button> 
+        </div>   
+        <footer id="Version">Version 1.0</footer>
+    </body>
+</html>
