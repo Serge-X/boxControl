@@ -1,24 +1,24 @@
 {
-  "name": "buttonControl",
+  "name": "buttoncontrol",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://github.com/Serge-X/boxControl",
   "dependencies": {
     "gh-pages": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist "
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Serge-X/boxControl.git"
+    "url": "git+https://github.com/Serge-X/boxControl.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Serge-X/boxControl/issues"
-  },
-  "homepage": "https://github.com/Serge-X/boxControl"
+  }
 }
