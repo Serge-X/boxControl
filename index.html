@@ -19,6 +19,14 @@
             <input type="text" id="number" oninput="realSpeed(this.value)" > <span>speed:</span> 
             <button id="Reset" onclick="Reset()"> Reset </button> 
         </div>   
-        <footer id="Version">Version 1.0</footer>
+        <div id="versionHistory">
+            <p id="versionTitle">Version History</p>
+            <p>Version 1.1: Added Version history box</p>
+            <p>Version 1.0: First completed version of web page</p>
+        </div>
+        <footer id="Version" onclick="Show()">Version 1.1</footer>
+
+        <script src="versionUpdate.js"></script>
+
     </body>
 </html>
