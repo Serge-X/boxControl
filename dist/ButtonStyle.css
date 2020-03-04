@@ -129,3 +129,23 @@ footer#Version{
     left: 1750px;
     text-align: justify;
 }
+#Version:hover{
+    color: blue;
+}
+#versionTitle{
+    text-align: center;
+    margin-top:0px;
+    padding-bottom: 10px;
+}
+#versionHistory{
+    position: absolute;
+    display: none;
+    left: 75vw;
+    top: 35vh;
+    border-radius: 15px;
+    font-size: 22px;
+    background-color: aqua;
+    width: 20vw;
+    height:17vw;
+    margin: auto;
+}
