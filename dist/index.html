@@ -1,11 +1,12 @@
 <html>
     <head>
         <title>Magic Button</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="ButtonStyle.css">
         <script src="Movement.js"></script>
     </head>
-    <body onload="setTimeout(disappear,3000) ">
-        <p id="Teext">Use the arrow buttons to move box-kun and use the speed box to change his speed!!</p>
+    <body onload="setTimeout(disappear,4500) ">
+        <p id="Teext">Use the arrow buttons to move box-kun and use the speed box to change his speed</p>
         <div id="boxKun"></div>
         <div id="buttonContainer" >
             <button id="rightMove" onmousedown= "BtnContext(this.id)"></button>
@@ -21,6 +22,7 @@
         </div>   
         <div id="versionHistory">
             <p id="versionTitle">Version History</p>
+            <p>Version 1.2: Added responsive design and increased text time</p>
             <p>Version 1.1: Added Version history box</p>
             <p>Version 1.0: First completed version of web page</p>
         </div>
