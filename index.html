@@ -6,7 +6,7 @@
         <script src="Movement.js"></script>
     </head>
     <body onload="setTimeout(disappear,4500) ">
-        <p id="Teext">Use the arrow buttons to move box-kun and use the speed box to change his speed</p>
+        <p id="Teext">Use the arrow buttons to move box-kun and the speed box to change his speed</p>
         <div id="boxKun"></div>
         <div id="buttonContainer" >
             <button id="rightMove" onmousedown= "BtnContext(this.id)"></button>
@@ -22,11 +22,12 @@
         </div>   
         <div id="versionHistory">
             <p id="versionTitle">Version History</p>
+            <p>Version 1.3: Changed clickable version history to be more like a link</p>
             <p>Version 1.2: Added responsive design and increased text time</p>
             <p>Version 1.1: Added Version history box</p>
             <p>Version 1.0: First completed version of web page</p>
         </div>
-        <footer id="Version" onclick="Show()">Version 1.2</footer>
+        <footer id="Version" onclick="Show()"><a href="#">Version 1.3</a></footer>
 
         <script src="versionUpdate.js"></script>
 
