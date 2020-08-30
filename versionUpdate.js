@@ -1,6 +1,9 @@
 let show=document.getElementById("versionHistory");
-show.style.display="none";
+let footer=document.getElementById("Version");
 let isgone=true;
+
+footer.addEventListener("click",Show);
+
 
 function Show(params) {
     if (isgone===true){

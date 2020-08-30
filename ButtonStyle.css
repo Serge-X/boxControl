@@ -130,6 +130,10 @@ footer#Version{
     left: 1750px;
     text-align: justify;
 }
+footer#Version:hover{
+    cursor: pointer;
+    color: #0000ff;
+}
 #versionTitle{
     text-align: center;
     margin-top:0px;
@@ -148,14 +152,6 @@ footer#Version{
     height:17vw;
     margin: auto;
     overflow-y: auto;
-}
-a:visited, a:link, a:active{
-    text-decoration: none;
-    color: white;
-}
-
-a:hover{
-    color: blue;
 }
 
 @media screen and (max-width: 1920px){
