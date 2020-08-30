@@ -3,6 +3,27 @@ offset needs to match with margin lef in CSS file except for the offsets with
 single digits. This is important if you change the box's 
 default starting position on the screen  */
 let newSpeed;
+// document.body.addEventListener("load", setTimeout(disappear,4500));
+setTimeout(disappear,4500);
+
+
+let buttons=document.getElementsByTagName("button");
+//Loop through all buttons  to assign an event handler
+for (i =0; i < buttons.length-1; i++)
+{
+    buttons[i].addEventListener("click",function(){
+        BtnContext(this.id);
+    });
+    
+}
+
+document.getElementById("Reset").addEventListener("click",Reset);
+let input=document.getElementById("number");
+input.addEventListener("input",function()
+{
+    realSpeed(this.value)
+});
+
 function BtnContext(id) {
     let box= document.getElementById("boxKun");
         switch (id) {
@@ -58,7 +79,7 @@ function BtnContext(id) {
                 break;
                 } 
              }
-
+//function for converting user speed input to a numbered value
 function realSpeed(Val) {
     newSpeed = Number(Val);
     return newSpeed;
