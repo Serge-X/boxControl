@@ -5,15 +5,20 @@ body{
     font-size: 3em;
     font-family: Arial, Helvetica, sans-serif; 
 }
+#teext{
+    text-align: center;
+}
 div#Boxkun {
     width: 150px;
     height: 150px;
-    /* to have original position setup set margin left to 150px */
-    margin-left: 550px;
+    margin: 0%;
+    box-sizing: border-box;
     /* background-color: brown; */
     background-image: url("Images/DefaultFace.png");
     /* box-shadow: -20px 5px black; */
     position: absolute;
+    top: 203px;
+    left: 503px;
 }
 div#buttonContainer{
     width: 400px;
