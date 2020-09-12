@@ -8,7 +8,7 @@ body{
 #teext{
     text-align: center;
 }
-div#Boxkun {
+div#Boxkun,#Boxkun:focus {
     width: 150px;
     height: 150px;
     margin: 0%;
@@ -19,6 +19,8 @@ div#Boxkun {
     position: absolute;
     top: 203px;
     left: 503px;
+    outline: none;
+
 }
 div#buttonContainer{
     width: 400px;
