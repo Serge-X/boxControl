@@ -7,9 +7,9 @@ let boxer = document.getElementById("boxKun");
 let changeTimer;
 
 boxer.addEventListener("keydown", function(e){
-    // console.log(e.key);
     KeyContext(e.key);
 });
+
 //Sets up scrolling text for scroll text and disappear function.
 const nextText =
     [
@@ -19,7 +19,7 @@ const nextText =
         "Also click on the version text to see the history of this webpage"
     ];
 
-setTimeout(disappear, 300);
+setTimeout(disappear, 10);
 let buttons = document.getElementsByTagName("button");
 
 //Loop through all buttons to assign an event handler
@@ -38,10 +38,7 @@ numinput.addEventListener("input", function () {
 
 });
 
-
-
 function BtnContext(id) {
-    // let boxer = document.getElementById("boxKun");
     switch (id) {
         case "rightMove":
             boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
@@ -95,7 +92,6 @@ function BtnContext(id) {
     }
 }
 function KeyContext(key) {
-    // let boxer = document.getElementById("boxKun");
     switch (key) {
         case "d":
             //rightMove
@@ -146,17 +142,20 @@ function KeyContext(key) {
             let text = document.getElementById("Teext");
             text.style.display= "block";
             text.innerHTML = "This did not work";
-            break;
+            setTimeout(() => {
+            text.style.display= "none";
+                
+            }, 3000);
+            bre
     }
 }
-//function for converting user speed input to a numbered value
+//converting user speed input to a numbered value
 function realSpeed(Val) {
     newSpeed = Number(Val);
     return newSpeed;
 }
 
 function Reset() {
-    // var boxer = document.getElementById("boxKun");
     boxer.style.top = "203px";
     boxer.style.left = "503px";
     boxer.style.backgroundImage = "url(Images/DefaultFace.png)";
@@ -168,7 +167,6 @@ function Check(Boxy) {
     let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
     let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
     let btnContainer = document.getElementById("buttonContainer");
-    // let btnwLocation= btnContainer.offsetHeight + btnContainer.offsetTop;
     if (boxSide >= (document.body.offsetWidth - 100)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
@@ -206,6 +204,7 @@ function scrollText() {
 
     }
 }
+
 
 function FocusChange() {
     boxer.focus();
