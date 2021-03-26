@@ -113,6 +113,7 @@ button#downleftMove{
 }
 input#number{
     width: 50px;
+    height: 25px;
     position: absolute;
     left: 350px;
 }
@@ -122,12 +123,25 @@ span{
     position: absolute;
     right: 50px;
 }
+span#state{
+    font-size: 18px;
+    float: right;
+    position: absolute;
+    right: 40px;
+    top: 65px;
+}
 button#Reset{
     position: absolute;
     left: 330px;
     top: 120px;
     font-size: 18px;
 
+}
+input#state{
+    position: absolute;
+    left: 370px;
+    top: 66px;
+    transform: scale(2.5);
 }
 footer#Version{
     float: inline-end;
