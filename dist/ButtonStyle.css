@@ -13,7 +13,6 @@ div#Boxkun,#Boxkun:focus {
     height: 150px;
     margin: 0%;
     box-sizing: border-box;
-    /* background-color: brown; */
     background-image: url("Images/DefaultFace.png");
     /* box-shadow: -20px 5px black; */
     position: absolute;
@@ -28,14 +27,12 @@ div#buttonContainer{
     border-style: solid;
     border-color: chartreuse;
     position: absolute;
-    /* top: 800px; */
     top: 50vh;
     
 }
 button#rightMove{
     width: 30px;
     height: 30px;
-    /* background-color: blueviolet; */
     background-image: url("Images/newRightarrow.png");
     background-position: -3px -2px;
     position: absolute;
@@ -45,7 +42,6 @@ button#rightMove{
 button#leftMove{
     width: 30px;
     height: 30px;
-    /* background-color: blue; */
     background-image: url("Images/newLeftarrow.png");
     position: absolute;
     top: 80px;
@@ -54,7 +50,6 @@ button#leftMove{
 button#upMove{
     width: 30px;
     height: 30px;
-    /* background-color: red; */
     background-image: url("Images/newUparrow.png");
     background-position: -2px 0px;
     position: absolute;
@@ -64,7 +59,6 @@ button#upMove{
 button#downMove{
     width: 30px;
     height: 30px;
-    /* background-color: springgreen; */
     background-image: url("Images/newDownarrow.png");
     background-position: -2px -4px;
     position: absolute;
@@ -74,7 +68,6 @@ button#downMove{
 button#uprightMove{
     width: 23px;
     height: 23px;
-    /* background-color: aqua; */
     background-image: url("Images/newUpRightarrow2.png");
     background-position: 21px -2px;
     position: absolute;
@@ -84,7 +77,6 @@ button#uprightMove{
 button#downrightMove{
     width: 23px;
     height: 23px;
-    /* background-color: darksalmon; */
     background-image: url("Images/newDownRightarrow2.png");
     background-position: 21px -3px;
     position: absolute;
@@ -94,7 +86,6 @@ button#downrightMove{
 button#upleftMove{
     width: 23px;
     height: 23px;
-    /* background-color: darkgreen; */
     background-image: url("Images/newUpLeftarrow2.png");
     background-position: 22px -1px;
     position: absolute;
@@ -104,7 +95,6 @@ button#upleftMove{
 button#downleftMove{
     width: 23px;
     height: 23px;
-    /* background-color: gold; */
     background-image: url("Images/newDownLeftarrow2.png");
     background-position: -1px -4px;
     position: absolute;
