@@ -167,6 +167,7 @@ function Check(Boxy) {
     let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
     let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
     let btnContainer = document.getElementById("buttonContainer");
+    let windowSize =[window.innerWidth, window.innerHeight];
     if (boxSide >= (document.body.offsetWidth - 100)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
