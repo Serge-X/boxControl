@@ -7,10 +7,10 @@ let boxer = document.getElementById("boxKun");
 let changeTimer;
 
 boxer.addEventListener("keydown", function(e){
-    // console.log(e.key);
     KeyContext(e.key);
 });
-//Sets up scrolling text for scroll text and disappear function.
+
+//Sets up scrolling text for scroll text and Disappear function.
 const nextText =
     [
         "Box-kun can be moved either with control box buttons or keyboard",
@@ -19,7 +19,7 @@ const nextText =
         "Also click on the version text to see the history of this webpage"
     ];
 
-setTimeout(disappear, 300);
+setTimeout(Disappear, 10);
 let buttons = document.getElementsByTagName("button");
 
 //Loop through all buttons to assign an event handler
@@ -33,15 +33,12 @@ for (i = 0; i < buttons.length - 1; i++) {
 document.getElementById("Reset").addEventListener("click", Reset);
 numinput.addEventListener("input", function () {
     clearTimeout(changeTimer);
-    realSpeed(this.value);
+    RealSpeed(this.value);
     if (numinput.value) { changeTimer = setTimeout(FocusChange, 550); }
 
 });
 
-
-
 function BtnContext(id) {
-    // let boxer = document.getElementById("boxKun");
     switch (id) {
         case "rightMove":
             boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
@@ -95,7 +92,6 @@ function BtnContext(id) {
     }
 }
 function KeyContext(key) {
-    // let boxer = document.getElementById("boxKun");
     switch (key) {
         case "d":
             //rightMove
@@ -146,17 +142,20 @@ function KeyContext(key) {
             let text = document.getElementById("Teext");
             text.style.display= "block";
             text.innerHTML = "This did not work";
-            break;
+            setTimeout(() => {
+            text.style.display= "none";
+                
+            }, 3000);
+            
     }
 }
-//function for converting user speed input to a numbered value
-function realSpeed(Val) {
+//converting user speed input to a numbered value
+function RealSpeed(Val) {
     newSpeed = Number(Val);
     return newSpeed;
 }
 
 function Reset() {
-    // var boxer = document.getElementById("boxKun");
     boxer.style.top = "203px";
     boxer.style.left = "503px";
     boxer.style.backgroundImage = "url(Images/DefaultFace.png)";
@@ -167,8 +166,6 @@ function Reset() {
 function Check(Boxy) {
     let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
     let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
-    let btnContainer = document.getElementById("buttonContainer");
-    // let btnwLocation= btnContainer.offsetHeight + btnContainer.offsetTop;
     if (boxSide >= (document.body.offsetWidth - 100)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
@@ -183,19 +180,26 @@ function Check(Boxy) {
     else if (boxSide <= 529 && boxSide2 >= 853) {
         Boxy.style.backgroundImage = "url(Images/Derpface.png)";
     }
-
     else {
         Boxy.style.backgroundImage = "url(Images/DefaultFace.png)";
 
     }
+    if (boxSide > window.innerWidth)
+    { 
+        window.scrollTo(boxSide, boxSide2)
+    } else (boxSide2 > window.innerHeight)
+    {
+        window.scrollTo(boxSide, boxSide2);
+    }
+
 
 }
 
-function disappear() {
-    timer = setInterval(scrollText, 3800);
+function Disappear() {
+    timer = setInterval(ScrollText, 3800);
 }
 
-function scrollText() {
+function ScrollText() {
     if (counter < 4) {
         instructions.innerHTML = nextText[counter];
         counter++
