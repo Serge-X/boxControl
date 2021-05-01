@@ -6,9 +6,6 @@ let instructions = document.getElementById("Teext");
 let boxer = document.getElementById("boxKun");
 let changeTimer;
 
-boxer.addEventListener("keydown", function(e){
-    KeyContext(e.key);
-});
 
 //Sets up scrolling text for scroll text and Disappear function.
 const nextText =
@@ -20,6 +17,17 @@ const nextText =
     ];
 
 setTimeout(Disappear, 10);
+
+let cState= document.getElementsByTagName("input")[1];
+cState.addEventListener("click", FocusChange);
+
+boxer.addEventListener("keydown", function(e, state){
+    state=cState;
+
+    KeyContext(e.key, state);
+});
+
+
 let buttons = document.getElementsByTagName("button");
 
 //Loop through all buttons to assign an event handler
@@ -91,7 +99,8 @@ function BtnContext(id) {
             break;
     }
 }
-function KeyContext(key) {
+function KeyContext(key, state) {
+    console.log(state.checked);
     switch (key) {
         case "d":
             //rightMove
@@ -160,6 +169,7 @@ function Reset() {
     boxer.style.left = "503px";
     boxer.style.backgroundImage = "url(Images/DefaultFace.png)";
     boxer.focus();
+
 
 }
 
