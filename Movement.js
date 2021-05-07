@@ -6,10 +6,6 @@ let instructions = document.getElementById("Teext");
 let boxer = document.getElementById("boxKun");
 let changeTimer;
 
-boxer.addEventListener("keydown", function(e){
-    KeyContext(e.key);
-});
-
 //Sets up scrolling text for scroll text and Disappear function.
 const nextText =
     [
@@ -20,17 +16,31 @@ const nextText =
     ];
 
 setTimeout(Disappear, 10);
+
+// stores state of checked box element for smooth animating
+let cState= document.getElementsByTagName("input")[1];
+cState.addEventListener("click", FocusChange);
+
+boxer.addEventListener("keydown", function(e){
+
+    cState.checked ? KeySContext(e.key): KeyContext(e.key);
+
+    
+});
+
+document.getElementById("Reset").addEventListener("click", Reset);
+
 let buttons = document.getElementsByTagName("button");
 
 //Loop through all buttons to assign an event handler
 for (i = 0; i < buttons.length - 1; i++) {
     buttons[i].addEventListener("click", function () {
-        BtnContext(this.id);
+
+        cState.checked ? BtnSContext(this.id): BtnContext(this.id);
     });
 
 }
 
-document.getElementById("Reset").addEventListener("click", Reset);
 numinput.addEventListener("input", function () {
     clearTimeout(changeTimer);
     RealSpeed(this.value);
@@ -39,6 +49,9 @@ numinput.addEventListener("input", function () {
 });
 
 function BtnContext(id) {
+    // Turns off the smooth transitions when cstate is not checked
+    boxer.style.transition= "left 0s, top 0s";
+
     switch (id) {
         case "rightMove":
             boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
@@ -91,7 +104,68 @@ function BtnContext(id) {
             break;
     }
 }
+function BtnSContext(id) {
+    // Turns on the smooth transitions when cstate is checked
+    boxer.style.transition= "left 3s, top 3s";
+    
+    switch (id) {
+        case "rightMove":
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            // boxer.focus();
+            break;
+        case "leftMove":
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "upMove":
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "downMove":
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "uprightMove":
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "downrightMove":
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "upleftMove":
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+        case "downleftMove":
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            boxer.focus();
+            break;
+
+        default:
+            let text = document.getElementById("Teext");
+            text.innerHTML = "This did not work";
+            break;
+    }
+}
 function KeyContext(key) {
+    console.log("Check is off");
+
+    // Turns off the smooth transitions when cstate is not checked
+    boxer.style.transition= "left 0s, top 0s";
+
     switch (key) {
         case "d":
             //rightMove
@@ -149,6 +223,69 @@ function KeyContext(key) {
             
     }
 }
+function KeySContext(key) {
+    console.log("check is on");
+    // Turns on the smooth transitions when cstate is checked
+    boxer.style.transition= `left 2s, top 2s`;
+    
+    switch (key) {
+        case "d":
+            //rightMove
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "a":
+            //leftMove
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "w":
+            //upMove
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "s":
+            //downMove
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "w" && "d":
+            //uprightMove
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "s" && "d":
+            //downrightMove
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft + newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "w" && "a":
+            //upleftMove
+            boxer.style.top = (boxer.offsetTop - newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            break;
+        case "s" && "a":
+            //downleftMove
+            boxer.style.top = (boxer.offsetTop + newSpeed) + 'px';
+            boxer.style.left = (boxer.offsetLeft - newSpeed) + 'px';
+            Check(boxer);
+            break;
+
+        default:
+            let text = document.getElementById("Teext");
+            text.style.display= "block";
+            text.innerHTML = "This did not work";
+            setTimeout(() => {
+            text.style.display= "none";
+                
+            }, 3000);
+            
+    }
+}
+
 //converting user speed input to a numbered value
 function RealSpeed(Val) {
     newSpeed = Number(Val);
@@ -161,11 +298,12 @@ function Reset() {
     boxer.style.backgroundImage = "url(Images/DefaultFace.png)";
     boxer.focus();
 
+
 }
 
 function Check(Boxy) {
-    let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
-    let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
+    var boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
+    var boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
     if (boxSide >= (document.body.offsetWidth - 100)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
@@ -196,6 +334,10 @@ function Check(Boxy) {
 }
 
 function Disappear() {
+    /* store timer variable to go through text
+    and to clear the interval after scrolling 
+    through text is completed */
+
     timer = setInterval(ScrollText, 3800);
 }
 
