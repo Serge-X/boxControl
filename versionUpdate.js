@@ -1,5 +1,5 @@
-let show=document.getElementById("versionHistory");
-let footer=document.getElementById("Version");
+const show=document.getElementById("versionHistory");
+const footer=document.getElementById("Version");
 let isgone=true;
 
 footer.addEventListener("click",Show);
