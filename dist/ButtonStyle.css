@@ -1,11 +1,13 @@
 body{
     margin: 0%;
+    height: 100%;
+    width: 100%;
     background-color: slategrey;
     color: aliceblue;
     font-size: 3em;
     font-family: Arial, Helvetica, sans-serif; 
 }
-#teext{
+#Teext{
     text-align: center;
 }
 div#Boxkun,#Boxkun:focus {
