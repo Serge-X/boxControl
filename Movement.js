@@ -1,5 +1,6 @@
 let newSpeed;
 const MAX_ADDED= 1000;
+let addedWindowState= false;
 let dBody=document.getElementsByTagName("body")[0];
 let documentWidth = dBody.offsetWidth;
 let documentHeight = dBody.offsetHeight;
@@ -8,6 +9,10 @@ let boxer = document.getElementById("boxKun");
 let buttons = document.getElementsByTagName("button");
 const defaultWindowHeight=window.innerHeight;
 const defaultWindowWidth=window.innerWidth;
+
+const FACE_RIGHT_VALUE=document.body.offsetWidth - 100;
+
+console.log(FACE_RIGHT_VALUE);
 
 
 let changeTimer;
@@ -300,7 +305,7 @@ function Reset() {
 function Check(Boxy) {
     let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
     let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
-    if (boxSide >= (document.body.offsetWidth - 100)) {
+    if (boxSide >= (FACE_RIGHT_VALUE)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
         Boxy.style.backgroundImage = "url(Images/OcrapLeft.png)";
@@ -318,41 +323,34 @@ function Check(Boxy) {
         Boxy.style.backgroundImage = "url(Images/DefaultFace.png)";
 
     }
+
+    // Checking width
     if (boxSide > defaultWindowWidth)
     { 
+        AddBackground();
+        // if(addedWindowState=== false){AddBackground();}
+        console.log("This if statement is running")
         console.log(boxSide);
         console.log("screen width " + defaultWindowWidth);
-         let newWidth= documentWidth + 1000;
-         dBody.style.width = newWidth + "px";
-         console.log("boxers left :"+  boxer.style.left);
-        window.scrollTo(boxSide +1000, boxSide2);
+        // window.scrollTo(boxSide, 0);
+        boxer.scrollIntoView(false);
 
-    } else {
-        console.log("else width then is checked")
-        window.scrollX(boxSide);
+    } else{
+        boxer.scrollIntoView(false);
 
     }
-    if (boxSide2 > defaultWindowHeight)
-    { 
-        console.log(boxSide);
-        console.log("screen height" + defaultWindowHeight );
-         let newheight= documentHeight + 1000;
-         dBody.style.height = newheight + "px";
-         console.log("boxers top :"+  boxer.style.top);
-        window.scrollTo(boxSide, boxSide2);
 
-    } else {
-        console.log("else height is checked")
-        window.scrollTo(boxer.scrollX, boxer.scrollY);
-
-    }
     
-    
-    // if (boxSide2 > window.innerHeight)
-    // {
-    //     window.scrollTo(boxSide, boxSide2);
-    // }
+}
 
+function AddBackground(){
+    let newheight= documentHeight + 100;
+    let newWidth= documentWidth + 100;
+
+    dBody.style.width = newWidth + "vw";
+    dBody.style.height = newheight + "vh";
+    
+    addedWindowState= true;
 
 }
 
