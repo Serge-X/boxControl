@@ -1,36 +1,37 @@
 let newSpeed;
-let counter = 0;
-let timer;
+const MAX_ADDED= 1000;
+let addedWindowState= false;
+let dBody=document.getElementsByTagName("body")[0];
+let documentWidth = dBody.offsetWidth;
+let documentHeight = dBody.offsetHeight;
 let numinput = document.getElementById("number");
-let instructions = document.getElementById("Teext");
 let boxer = document.getElementById("boxKun");
+let buttons = document.getElementsByTagName("button");
+const defaultWindowHeight=window.innerHeight;
+const defaultWindowWidth=window.innerWidth;
+
+const FACE_RIGHT_VALUE=document.body.offsetWidth - 100;
+
+console.log(FACE_RIGHT_VALUE);
+
+
 let changeTimer;
 
-//Sets up scrolling text for scroll text and Disappear function.
-const nextText =
-    [
-        "Box-kun can be moved either with control box buttons or keyboard",
-        "Use the speed box below and enter a number to change box-kun's speed",
-        "To move box-kun with keyboard use the 'W' 'A' 'S' 'D' keys", 
-        "Also click on the version text to see the history of this webpage"
-    ];
-
-setTimeout(Disappear, 10);
+console.log(defaultWindowWidth);
 
 // stores state of checked box element for smooth animating
 let cState= document.getElementsByTagName("input")[1];
+
 cState.addEventListener("click", FocusChange);
 
 boxer.addEventListener("keydown", function(e){
 
     cState.checked ? KeySContext(e.key): KeyContext(e.key);
 
-    
 });
 
 document.getElementById("Reset").addEventListener("click", Reset);
 
-let buttons = document.getElementsByTagName("button");
 
 //Loop through all buttons to assign an event handler
 for (i = 0; i < buttons.length - 1; i++) {
@@ -302,9 +303,9 @@ function Reset() {
 }
 
 function Check(Boxy) {
-    var boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
-    var boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
-    if (boxSide >= (document.body.offsetWidth - 100)) {
+    let boxSide = Boxy.offsetLeft + Boxy.offsetWidth;
+    let boxSide2 = Boxy.offsetTop + Boxy.offsetHeight;
+    if (boxSide >= (FACE_RIGHT_VALUE)) {
         Boxy.style.backgroundImage = "url(Images/OcrapRight.png)";
     } else if (boxSide <= 195) {
         Boxy.style.backgroundImage = "url(Images/OcrapLeft.png)";
@@ -322,35 +323,35 @@ function Check(Boxy) {
         Boxy.style.backgroundImage = "url(Images/DefaultFace.png)";
 
     }
-    if (boxSide > window.innerWidth)
+
+    // Checking width
+    if (boxSide > defaultWindowWidth)
     { 
-        window.scrollTo(boxSide, boxSide2)
-    } else (boxSide2 > window.innerHeight)
-    {
-        window.scrollTo(boxSide, boxSide2);
-    }
+        AddBackground();
+        // if(addedWindowState=== false){AddBackground();}
+        console.log("This if statement is running")
+        console.log(boxSide);
+        console.log("screen width " + defaultWindowWidth);
+        // window.scrollTo(boxSide, 0);
+        boxer.scrollIntoView(false);
 
-
-}
-
-function Disappear() {
-    /* store timer variable to go through text
-    and to clear the interval after scrolling 
-    through text is completed */
-
-    timer = setInterval(ScrollText, 3800);
-}
-
-function ScrollText() {
-    if (counter < 4) {
-        instructions.innerHTML = nextText[counter];
-        counter++
-    } else {
-        clearInterval(timer);
-        instructions.style.display = "none";
-        Reset();
+    } else{
+        boxer.scrollIntoView(false);
 
     }
+
+    
+}
+
+function AddBackground(){
+    let newheight= documentHeight + 100;
+    let newWidth= documentWidth + 100;
+
+    dBody.style.width = newWidth + "vw";
+    dBody.style.height = newheight + "vh";
+    
+    addedWindowState= true;
+
 }
 
 function FocusChange() {
